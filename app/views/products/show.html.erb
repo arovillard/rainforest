@@ -1,2 +1,6 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<%= link_to 'All products', products_path %> | <%= link_to 'Edit product', edit_product_path %>
+<h1><%= @product.name.capitalize %></h1>
+<p>Description: <%= @product.description %>
+<p>Price: <%= @product.formatted_price %>
+<br>
+<%= link_to 'Back to all products', products_path %>

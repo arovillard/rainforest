@@ -1,2 +1,16 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<%= link_to 'Create new product', new_product_path %>
+<h1>Rainforest.ca</h1>
+<h3>Your #1 trusted online shopping destination</h3>
+
+<ul>
+  <% @products.each do |product| %>
+      <li>
+        <%= link_to product_path(product) do %>
+          <p>Product name: <%= product.name %> </p>
+        <% end %>
+        <p>Description: <%= product.description %></p>
+        <p>Price: <%= product.formatted_price %></p>
+      </li>
+  <% end %>
+</ul>
+
