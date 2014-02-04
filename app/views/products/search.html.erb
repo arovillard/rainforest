@@ -1,15 +1,12 @@
 <%= form_tag(search_path, method: "get") do %>
-    <% if current_user %>
-      <%= link_to "Create new product", new_product_path %>
-    <% end %> |
-    <%= label_tag(:search, "Search for a product:") %>
-    <%= text_field_tag(:search) %>
-    <%= submit_tag("Search") %>
-    <% end %>
+  <%= link_to "Back to all-products", products_path %> |
+  <%= link_to "Create new product", new_product_path %> |
+  <%= label_tag(:search, "Search for a product:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
-<h1>Rainforest.ca</h1>
-<h3>Your #1 trusted online shopping destination</h3>
-
+<h1>Results</h1>
 <ul>
   <% @products.each do |product| %>
       <li>
@@ -22,4 +19,3 @@
       </li>
   <% end %>
 </ul>
-

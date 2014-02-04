@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :ensure_logged_in, :except => [:show, :index]
 
   def index
     @products = Product.all
@@ -6,6 +7,9 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    if current_user
+      @review = @product.reviews.build
+    end
   end
 
   def new
@@ -39,11 +43,15 @@ class ProductsController < ApplicationController
     @Product.destroy
     redirect_to products_path
   end
+  def search
+    @products = Product.where("name like ? OR description like ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    # @total = @posts.total
+  end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price_in_cents)
+    params.require(:product).permit(:name, :description, :price_in_cents, :picture_url)
   end
 
 end
