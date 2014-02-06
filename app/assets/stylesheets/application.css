@@ -16,7 +16,6 @@
 
 [class*='col'] {
   float: left;
-  padding: 0.3em;
 }
 
 [class*='col']:last-of-type {
@@ -82,7 +81,7 @@ h3{
 }
 
 .sub-heather{
-  margin-top: 20px;
+  margin: 25px 0;
 }
 
 .current a, .current a:visited {
@@ -95,7 +94,7 @@ h3{
 }
 
 .top-nav{
-  margin-right: 1%;
+  padding-left:31px;
 }
 
 .nav-menu{
@@ -105,12 +104,13 @@ h3{
 
 .search{
   float: right;
-  margin-right: 230px;
+  margin-right: 42px;
 }
 
 .search-box{
-  width: 700px;
+  width: 845px;
   height: 30px;
+}
 }
 .search-tag{
   font-size: 20px;
@@ -120,16 +120,40 @@ h3{
 .nav-menu a{
   text-decoration: none;
   font-size: 20px;
+  color: #4A4A4A;
 }
 
-.search-button{
+/*.search-button{
   width: 71px;
   height: 30px;
   background-color: #E16D17;
   color: white;
   font-size: 15px;
   border-radius: 6px;
+}*/
+
+.search-button{
+    background-color:#E16D17;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#fafafa;
+    font-size:14px;
+    font-weight:bold;
+    padding:5px 24px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #70706f;
 }
+.search-button:hover {
+    background-color:#C1580A;
+}
+.search-button:active {
+    position:relative;
+    top:1px;
+}
+
 
 .login-status{
   margin-top: 70px;
@@ -144,7 +168,20 @@ h3{
 }
 
 .product-title{
+  float: left;
   color: #4A4A4A;
+  padding-right: 10px
+}
+.show-edit{
+  float: left;
+  padding-top: 9px;
+}
+.show-edit a{
+  text-decoration: none;
+  color: #E16D17;
+}
+.product-subtitle{
+  float: left;
 }
 
 .center-picture{
@@ -182,8 +219,13 @@ h3{
 }
 .product-price{
   float: left;
-  padding-top: 1.5%;
-  padding-left: 1.5%
+  padding-top: 4px;
+  padding-left: 4px;
+}
+.product-description{
+  float: left;
+  padding-top: 4px;
+  padding-left: 4px;
 }
 .anchor-title{
   text-decoration: none;
@@ -204,7 +246,41 @@ h3{
   margin: 0 auto;
 }
 
+/*Product: =>  /*new*/
+.new{
+  width: 50%;
+  margin: 0 auto;
+}
+/*form*/
+.button{
+    background-color:#E16D17;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    color:#fafafa;
+    font-size:14px;
+    font-weight:bold;
+    padding:7px 24px;
+    text-decoration:none;
+    text-shadow:0px 0px 0px #70706f;
+}
+.button:hover {
+    background-color:#C1580A;
+}
+.button:active {
+    position:relative;
+    top:1px;
+}
 
+/*show*/
+.main-image{
+  max-width: 600px;
+}
+.cushion{
+  padding: 0 31px;
+}
 
 /*Review:*/
 
