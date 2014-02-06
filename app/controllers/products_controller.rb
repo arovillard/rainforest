@@ -1,12 +1,14 @@
 class ProductsController < ApplicationController
-  before_filter :ensure_logged_in, :except => [:show, :index]
+  before_filter :ensure_logged_in, :except => [:show, :index, :search]
+  before_filter :load_product, :only => [:show, :edit, :update, :destroy]
+  before_filter :ensure_ownership, :only => [:edit, :update]
+
 
   def index
     @products = Product.all
   end
 
   def show
-    @product = Product.find(params[:id])
     if current_user
       @review = @product.reviews.build
     end
@@ -18,19 +20,19 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.owner = current_user
     if @product.save
-      redirect_to products_path(@product)
+      redirect_to products_path
     else
       render :new
     end
   end
 
   def edit
-    @product = Product.find(params[:id])
+
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update_attributes(product_params)
       redirect_to products_path(@product)
     else
@@ -39,7 +41,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @Product.destroy
     redirect_to products_path
   end
@@ -50,8 +51,19 @@ class ProductsController < ApplicationController
 
   private
 
+  def load_product
+    @product = Product.find(params[:id])
+  end
+
+  def ensure_ownership
+    unless current_user.id == @product.user_id
+      flash[:alert] = "NOOO YOU DON'T OWN THIS"
+      redirect_to product_path(@product)
+    end
+  end
+
   def product_params
-    params.require(:product).permit(:name, :description, :price_in_cents, :picture_url)
+    params.require(:product).permit(:name, :description, :price_in_cents, :picture_url, :user_id)
   end
 
 end

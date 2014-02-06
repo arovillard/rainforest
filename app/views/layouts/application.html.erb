@@ -3,26 +3,72 @@
 <head>
   <title>Rainforest</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Akronim' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if flash[:notice] %>
-    <p id="notice"><%= flash[:notice] %></p>
-  <% end %>
-  <% if flash[:alert] %>
-    <p id="alert"><%= flash[:alert] %></p>
-  <% end %>
+  <section class="header">
+    <div class="frame">
+      <div class="col2">
+        <h1 class="branding">Rainforest.ca</h1>
+        <h3>Your #1 trusted online shopping destination</h3>
+      </div>
+      <div class="col2">
+        <div class="login-status">
+          <% if current_user %>
+            <h3 class="log-in-out"><%= link_to "Log out", session_path("current"), :method => :delete %></h3>
+            <h3 class="user-info">Signed in as <%= current_user.name %>.</h3>
+          <% else %>
+            <h3 class="log-in-out">
+              <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+            </h3>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <p class="userinfo">
-    <% if current_user %>
-      Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-    <% else %>
-      <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-    <% end %>
-  </p>
+  <section class="sub-heather">
+    <div class="frame">
+      <div class="col1">
+        <div class="top-nav">
+          <div class="nav-menu">
+            <% unless current_page?(products_path) %>
+              <%= link_to "Home", products_path %>
+            <% end %>
+          </div>
+          <div class="nav-menu">
+            <% if current_user %>
+              <%= link_to "Create-Product", new_product_path %>
+            <% end %>
+          </div>
+        </div>
+<!--       </div>
+ -->        <div class="search">
+          <%= form_tag(search_path, method: "get") do %>
+            <%= label_tag(:search, "Search", :class=>"search-tag") %>
+            <%= text_field_tag(:search,"",:class => "search-box") %>
+            <%= button_tag("Find", :class=> "search-button") %>
+          <% end %>
+        </div>
+      </div>
+      </div>
+    <div class="clear-both"></div>
+  </section>
 
-<%= yield %>
+      <div class="main-alert">
+        <% if flash[:notice] %>
+          <p id="notice"><%= flash[:notice] %></p>
+        <% end %>
+        <% if flash[:alert] %>
+          <p id="alert"><%= flash[:alert] %></p>
+        <% end %>
+      </div>
+
+
+  <%= yield %>
 
 </body>
 </html>

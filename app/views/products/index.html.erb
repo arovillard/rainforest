@@ -1,25 +1,21 @@
-<%= form_tag(search_path, method: "get") do %>
-    <% if current_user %>
-      <%= link_to "Create new product", new_product_path %>
-    <% end %> |
-    <%= label_tag(:search, "Search for a product:") %>
-    <%= text_field_tag(:search) %>
-    <%= submit_tag("Search") %>
-    <% end %>
 
-<h1>Rainforest.ca</h1>
-<h3>Your #1 trusted online shopping destination</h3>
 
-<ul>
-  <% @products.each do |product| %>
-      <li>
-        <%= link_to product_path(product) do %>
-          <p>Product name: <%= product.name %> </p>
-        <% end %>
-        <img src="<%= product.picture_url %>" style="max-width: 100px;">
-        <p>Description: <%= product.description %></p>
-        <p>Price: $<%= product.formatted_price %></p>
-      </li>
-  <% end %>
-</ul>
-
+<section class="all products">
+  <div class="frame">
+    <ul class="product-list">
+      <% @products.sample(8).each do |product| %>
+          <div class="box">
+            <li class="index-product">
+              <%= link_to product_path(product), :class => "anchor-title" do %>
+                <h1 class="product-title"><%= product.name %></h1>
+              <% end %>
+              <p class="center-picture"><img src="<%= product.picture_url %>" class="thumb-image"></p>
+              <h3 class="product-subtitle">Description:</h3> <p class="product-description"><%= product.description %></p>
+              <h3 class="product-price-subtitle">Price:</h3> <p class="product-price">$<%= product.formatted_price %></p>
+            </li>
+          </div>
+      <% end %>
+    </ul>
+    <div class="clear-both"></div>
+  </div>
+</div>

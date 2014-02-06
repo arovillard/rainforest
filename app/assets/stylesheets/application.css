@@ -1,3 +1,38 @@
+/* MINI GRID */
+
+*,
+*:before,
+*:after {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+        box-sizing: border-box;
+}
+
+.frame {
+        width: 100%;
+}
+
+[class*='col'] {
+  float: left;
+  padding: 0.3em;
+}
+
+[class*='col']:last-of-type {
+  float: right;
+}
+
+.col1  { width: 100% }
+.col2  { width: 50% }
+.col3  { width: 33.33% }
+
+/* Clearfix */
+.frame:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -11,3 +46,167 @@
  *= require_self
  *= require_tree .
  */
+/*Custom CSS for Views*/
+
+/*Application:*/
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+h3{
+  color: #E16D17;
+}
+
+.branding{
+  font-family: 'Akronim', cursive;
+  font-size: 60px;
+  color: #E16D17;
+}
+
+.clear-both{
+  clear: both;
+}
+.frame {
+        width: 80%;
+        margin: 0 auto;
+}
+
+.header {
+        background-color: #ECECEC;
+        padding: 15px;
+}
+
+.header, .header a, .header a:visited {
+        text-decoration: none;
+        color: #4A4A4A;
+}
+
+.sub-heather{
+  margin-top: 20px;
+}
+
+.current a, .current a:visited {
+        color: #17A697;
+}
+
+.link-block {
+        text-align: center;
+  padding: 50px;
+}
+
+.top-nav{
+  margin-right: 1%;
+}
+
+.nav-menu{
+  float: left;
+  margin-right: 37px;
+}
+
+.search{
+  float: right;
+  margin-right: 230px;
+}
+
+.search-box{
+  width: 700px;
+  height: 30px;
+}
+.search-tag{
+  font-size: 20px;
+  color: #4A4A4A;
+}
+
+.nav-menu a{
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.search-button{
+  width: 71px;
+  height: 30px;
+  background-color: #E16D17;
+  color: white;
+  font-size: 15px;
+  border-radius: 6px;
+}
+
+.login-status{
+  margin-top: 70px;
+  color: #E16D17;
+}
+
+
+
+/*Product: =>  /*index*/
+.product-list{
+  list-style: none;
+}
+
+.product-title{
+  color: #4A4A4A;
+}
+
+.center-picture{
+  text-align: center;
+}
+
+.thumb-image{
+  max-width: 60%;
+  max-height: 55%;
+}
+
+.box{
+  position: relative;
+  width: 20%;
+  float: left;
+  margin: 2.5%;
+}
+
+.box:before{
+  content: "";
+  display: block;
+  padding-top: 100%;  /* initial ratio of 1:1*/
+}
+
+.index-product{
+  position:  absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.product-price-subtitle{
+  float: left;
+}
+.product-price{
+  float: left;
+  padding-top: 1.5%;
+  padding-left: 1.5%
+}
+.anchor-title{
+  text-decoration: none;
+}
+
+.user-info{
+  float: right;
+}
+
+.log-in-out{
+  float: right;
+  margin-left: 2%;
+}
+
+/*Product: =>  /*edit*/
+.edit{
+  width: 50%;
+  margin: 0 auto;
+}
+
+
+
+/*Review:*/
+
+
+/*Session:*/

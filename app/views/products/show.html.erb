@@ -1,12 +1,13 @@
-<%= link_to 'All products', products_path %> |
-<% if current_user %>
-  <%= link_to 'Edit product', edit_product_path %>
-<% end %>
-<h1><%= @product.name.capitalize %></h1>
-  <%= link_to image_tag(@product.picture_url, :style => "max-width: 250px;"), @product.picture_url %>
-<!--     <img style="max-width: 250px" src="<%= @product.picture_url %>">-->
-<p>Description: <%= @product.description %>
-<p>Price: <%= @product.formatted_price %>
+<div class="show-product">
+  <h1 class="product-title"><%= @product.name.capitalize %></h1>
+  <% if current_user == @product.owner %>
+    <%= link_to 'Edit product', edit_product_path %>
+  <% end %><br>
+  <%= link_to image_tag(@product.picture_url, :class => "main-image"), @product.picture_url %>
+  <h3 class="product-subtitle">Description:</h3> <p class="product-description"><%= @product.description %></p>
+  <h3 class="product-subtitle">Price:</h3> <p class="product-price"><%= @product.formatted_price %></p>
+</div>
+
 <br>
 
 <h3>Reviews</h3>
@@ -21,6 +22,7 @@
     <% end %>
   </p>
 <% end %>
+
 
 <% if current_user %>
   <h4>New Review</h4>
